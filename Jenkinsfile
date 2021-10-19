@@ -15,7 +15,7 @@ pipeline {
                 '''
             }
         }
-        stage('reports') {
+        stage('Report') {
             steps {
             script {
                     allure([
