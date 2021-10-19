@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'Building..'
+                ./mvnw clean test
             }
         }
     }
