@@ -2,10 +2,10 @@ package com.epam.testproject;
 
 import org.testng.annotations.Test;
 
-public class FirstTest {
+public class FirstTest extends BaseTest {
 
     @Test
     public void firstTest() {
-        //dummy test, always passes
+        webDriver.get("https://github.com/");
     }
 }
