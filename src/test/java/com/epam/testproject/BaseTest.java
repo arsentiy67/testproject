@@ -21,7 +21,7 @@ public abstract class BaseTest {
         options.addArguments("--headless");
         options.addArguments("--disable-dev-shm-usage");
         webDriver = new ChromeDriver(options);
-        webDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @AfterMethod
