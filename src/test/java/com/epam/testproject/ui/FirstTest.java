@@ -6,7 +6,7 @@ public class FirstTest extends BaseTest {
 
     @Test
     public void firstTest() {
-        System.out.println("WEB DRIVER " + webDriver);
+        log.info("WEB DRIVER " + webDriver);
         webDriver.get("https://github.com/");
     }
 }

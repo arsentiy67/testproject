@@ -5,6 +5,7 @@
     <test name="Tests">
         <packages>
             <package name="com.epam.testproject.ui"/>
+            <package name="com.epam.testproject.api"/>
         </packages>
     </test>
 </suite>
