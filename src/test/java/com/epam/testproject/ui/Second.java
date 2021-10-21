@@ -9,4 +9,16 @@ public class Second extends BaseTest {
         log.info("WEB DRIVER " + webDriver);
         webDriver.get("https://github.com/");
     }
+
+    @Test
+    public void secondTest1() {
+        log.info("WEB DRIVER " + webDriver);
+        webDriver.get("https://github.com/");
+    }
+
+    @Test
+    public void secondTest2() {
+        log.info("WEB DRIVER " + webDriver);
+        webDriver.get("https://github.com/");
+    }
 }
