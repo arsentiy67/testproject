@@ -1,5 +1,6 @@
 package utils.properties;
 
+@FilePath(value = "./src/test/resources/env.properties")
 public class SystemProperties {
 
   @Property(value = "base_url")
