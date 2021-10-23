@@ -1,4 +1,4 @@
-package steps;
+package com.hackathon.testproject.steps;
 
 import core.DriverFactory;
 import core.web.iWebElement;
