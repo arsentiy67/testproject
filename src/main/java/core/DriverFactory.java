@@ -19,7 +19,6 @@ public class DriverFactory {
     iLogger.info("Create driver " + driverName);
     switch (driverName) {
       case CHROME:
-//        WebDriverManager.chromedriver().driverVersion(SystemProperties.BROWSER_VERSION).setup();
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = (ChromeOptions) (new DriverCapabilities(BrowserNames.CHROME)).getCapabilities();
         chromeOptions.addArguments("--disable-dev-shm-usage");
@@ -30,6 +29,9 @@ public class DriverFactory {
       case FIREFOX:
         WebDriverManager.firefoxdriver().setup();
         FirefoxOptions firefoxOptions = (FirefoxOptions) (new DriverCapabilities(BrowserNames.FIREFOX)).getCapabilities();
+        firefoxOptions.addArguments("--disable-dev-shm-usage");
+        firefoxOptions.addArguments("--no-sandbox");
+        firefoxOptions.addArguments("--headless");
         DRIVER.set(new FirefoxDriver(firefoxOptions));
         return DRIVER.get();
       default:
