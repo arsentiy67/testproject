@@ -8,7 +8,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 import pages.AbstractPage;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class QuotePage extends AbstractPage<QuotePage> {
@@ -31,6 +33,10 @@ public class QuotePage extends AbstractPage<QuotePage> {
     @FindBy(css = ".DataTable-nyse .Close [class*='table-cell-price']")
     private iElementsList historicPricesCloseValues;
 
+    private static final String DATE_FORMAT_INITIAL = "MM/dd/yyyy";
+    private static final String DATE_FORMAT_OUTPUT = "YYYY-MM-DD";
+    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat(DATE_FORMAT_INITIAL);
+
     public void setHistoricPricesRange(Period period) {
         fromDateInput.setFocus();
         setDate(fromDateInput, period.getStartDate());
@@ -47,6 +53,12 @@ public class QuotePage extends AbstractPage<QuotePage> {
                     .build());
         }
         return historicPrices;
+    }
+
+    private String convertToDateInAnotherFormat(String date) {
+        Date d = SIMPLE_DATE_FORMAT.parse(date);
+        SIMPLE_DATE_FORMAT.applyPattern(DATE_FORMAT_OUTPUT);
+        return SIMPLE_DATE_FORMAT.format(d);
     }
 
     private void setDate(iWebElement dateInput, String date) {
