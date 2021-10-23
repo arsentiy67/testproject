@@ -2,13 +2,17 @@ package pages.nyse;
 
 import core.web.iElementsList;
 import core.web.iWebElement;
+import lombok.SneakyThrows;
 import model.HistoricPrice;
 import model.Period;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 import pages.AbstractPage;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class QuotePage extends AbstractPage<QuotePage> {
@@ -31,6 +35,10 @@ public class QuotePage extends AbstractPage<QuotePage> {
     @FindBy(css = ".DataTable-nyse .Close [class*='table-cell-price']")
     private iElementsList historicPricesCloseValues;
 
+    private static final String DATE_FORMAT_INITIAL = "MM/dd/yyyy";
+    private static final String DATE_FORMAT_OUTPUT = "yyyy-MM-dd";
+    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat(DATE_FORMAT_INITIAL);
+
     public void setHistoricPricesRange(Period period) {
         fromDateInput.setFocus();
         setDate(fromDateInput, period.getStartDate());
@@ -38,15 +46,22 @@ public class QuotePage extends AbstractPage<QuotePage> {
         goBtn.click();
     }
 
-    public List<HistoricPrice> getHistoricPrices() {
+    public List<HistoricPrice> getHistoricPrices() throws ParseException {
         List<HistoricPrice> historicPrices = new ArrayList<>();
         for (int rowInd = 0; rowInd < historicPricesDateValues.size(); ++rowInd) {
             historicPrices.add(HistoricPrice.builder()
-                    .date(historicPricesDateValues.get(rowInd).getText())
+                    .date(convertToDateInAnotherFormat(historicPricesDateValues.get(rowInd).getText()))
                     .value(historicPricesCloseValues.get(rowInd).getText())
                     .build());
         }
         return historicPrices;
+    }
+
+    private String convertToDateInAnotherFormat(String date) throws ParseException {
+        SIMPLE_DATE_FORMAT.applyPattern(DATE_FORMAT_INITIAL);
+        Date d = SIMPLE_DATE_FORMAT.parse(date);
+        SIMPLE_DATE_FORMAT.applyPattern(DATE_FORMAT_OUTPUT);
+        return SIMPLE_DATE_FORMAT.format(d);
     }
 
     private void setDate(iWebElement dateInput, String date) {
