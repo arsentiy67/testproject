@@ -20,7 +20,9 @@ public class DriverFactory {
     switch (driverName) {
       case CHROME:
         WebDriverManager.chromedriver().driverVersion(SystemProperties.BROWSER_VERSION).setup();
-        DRIVER.set(new ChromeDriver((ChromeOptions) (new DriverCapabilities(BrowserNames.CHROME)).getCapabilities()));
+        ChromeOptions capabilities = (ChromeOptions) (new DriverCapabilities(BrowserNames.CHROME)).getCapabilities();
+        capabilities.addArguments("--disable-dev-shm-usage");
+        DRIVER.set(new ChromeDriver(capabilities));
         return DRIVER.get();
       case FIREFOX:
         WebDriverManager.firefoxdriver().setup();
