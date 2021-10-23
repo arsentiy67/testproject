@@ -26,7 +26,7 @@ public class FibonacciPrimeRandomGenerator {
         return Arrays.asList(array);
     }
 
-    public static boolean isPrime(int number) {
+    private static boolean isPrime(int number) {
         BigInteger bigInt = BigInteger.valueOf(number);
         return bigInt.isProbablePrime(100);
     }

@@ -1,10 +1,9 @@
 package pages;
 
+import core.web.iElementsList;
 import core.web.iWebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.logging.iLogger;
-
-import java.util.List;
 
 public class YouTubePage extends AbstractPage {
     @FindBy(xpath = "//input[@id='search']")
@@ -12,7 +11,7 @@ public class YouTubePage extends AbstractPage {
     @FindBy(xpath = "//ytd-channel-renderer//yt-formatted-string[@id='text' and text()='%s']")
     private iWebElement searchChannelName;
     @FindBy(css = "a#video-title")
-    private List<iWebElement> videoTitles;
+    private iElementsList videoTitles;
 
     public YouTubePage(String pageUrl) {
         super(pageUrl);
