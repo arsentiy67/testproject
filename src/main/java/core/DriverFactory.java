@@ -15,11 +15,14 @@ public class DriverFactory {
   private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
 
   public static WebDriver getDriver() throws Exception {
+    if (DRIVER.get() != null) {
+      getCurrentDriver();
+    }
+
     driverName = DriverNames.valueOf(SystemProperties.DRIVER.toUpperCase());
     iLogger.info("Create driver " + driverName);
     switch (driverName) {
       case CHROME:
-//        WebDriverManager.chromedriver().driverVersion(SystemProperties.BROWSER_VERSION).setup();
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = (ChromeOptions) (new DriverCapabilities(BrowserNames.CHROME)).getCapabilities();
         chromeOptions.addArguments("--disable-dev-shm-usage");

@@ -1,4 +1,4 @@
-package fibonacci;
+package utils;
 
 import java.math.BigInteger;
 import java.util.Arrays;
@@ -9,14 +9,14 @@ import java.util.stream.Collectors;
 public class FibonacciPrimeRandomGenerator {
 
     public static int generate() {
-        List<Integer> list = fibbonachi(40).stream()
+        List<Integer> list = fibonacci(40).stream()
                 .filter(FibonacciPrimeRandomGenerator::isPrime)
                 .collect(Collectors.toList());
         Random random = new Random();
         return list.get(random.nextInt(list.size()));
     }
 
-    private static List<Integer> fibbonachi(int n) {
+    private static List<Integer> fibonacci(int n) {
         Integer[] array = new Integer[n];
         array[0] = 1;
         array[1] = 1;
