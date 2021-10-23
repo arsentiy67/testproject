@@ -58,7 +58,6 @@ public class DriverFactory {
     ChromeOptions chromeOptions = (ChromeOptions) (new DriverCapabilities(BrowserNames.CHROME)).getCapabilities();
     chromeOptions.addArguments("--disable-dev-shm-usage");
     chromeOptions.addArguments("--no-sandbox");
-    chromeOptions.addArguments("--headless");
     chromeOptions.addArguments("--lang=en-GB");
     return chromeOptions;
   }
