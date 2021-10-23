@@ -40,12 +40,7 @@ public class YouTubePage extends AbstractPage {
         searchChannelName.template(channelName).click();
     }
 
-    @SneakyThrows
     public void clickMatchingVideo(String title) {
-//        new WebDriverWait(DriverFactory.getCurrentDriver(), 30)
-//                .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//yt-formatted-string[@aria-label]")));
-        Thread.sleep(3000);
-        System.out.println(videoTitles.size());
         iWebElement titleOnPage = videoTitles
                 .stream()
                 .filter(s -> s.getAttribute("aria-label").contains(title))
