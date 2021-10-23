@@ -1,6 +1,16 @@
 pipeline {
     agent any
 
+    parameters {
+        choice(choices: ['CHROME', 'CHROME_MOBILE', 'FIREFOX'], name: 'driver', description: 'Choose browser')
+    }
+
+    environment {
+        driver = "${params.driver}"
+        DISPLAY = ":0"
+    }
+
+
     stages {
         stage('Clean') {
             steps {
