@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Build') {
             environment {
-                driver=${params.driver}
+                driver="${params.driver}"
             }
             steps {
                 sh '''
