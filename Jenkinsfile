@@ -1,6 +1,13 @@
 pipeline {
     agent any
 
+    properties([
+      parameters([
+        string(name: 'driver', defaultValue: 'chrome')
+      ])
+    ])
+
+
     stages {
         stage('Clean') {
             steps {
