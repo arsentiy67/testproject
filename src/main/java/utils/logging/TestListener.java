@@ -20,7 +20,7 @@ public class TestListener extends TestListenerAdapter {
 
     @Override
     public void onTestSuccess(ITestResult tr) {
-        iLogger.info("Test success " + tr.getTestName());
+        iLogger.info("Test success " + tr.getMethod());
         iLogger.takeScreenshot();
     }
 }
