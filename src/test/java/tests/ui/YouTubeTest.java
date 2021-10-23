@@ -12,7 +12,7 @@ import java.util.List;
 public class YouTubeTest extends BaseUITest {
 
     @Test
-    public void test() {
+    public void youtubeTest() {
         String channelName = "EPAM Systems Global";
         List<String> videoTitles;
         int videoNumber = FibonacciPrimeRandomGenerator.generate();
@@ -24,14 +24,6 @@ public class YouTubeTest extends BaseUITest {
         ChannelSteps.openVideoByTitle(videoTitles.get(videoNumber % videoTitles.size() - 1));
         ChannelSteps.screenshot();
         //part 2 with API call
-        String videoName = VideoServiceSteps.getVideoName();
-        VideoServiceSteps.selectVideoByTitle(videoName);
-        YoutubeSteps.clickMatchingVideo(videoName);
-        iLogger.takeScreenshot();
-    }
-
-    @Test
-    public void test1() {
         String videoName = VideoServiceSteps.getVideoName();
         VideoServiceSteps.selectVideoByTitle(videoName);
         YoutubeSteps.clickMatchingVideo(videoName);
