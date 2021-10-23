@@ -27,13 +27,14 @@ public class YouTubeTest extends BaseUITest {
         String videoName = VideoServiceSteps.getVideoName();
         VideoServiceSteps.selectVideoByTitle(videoName);
         YoutubeSteps.clickMatchingVideo(videoName);
+        iLogger.takeScreenshot();
     }
 
     @Test
     public void test1() {
-        String videoName = getVideoName();
-        selectVideoByTitle(videoName);
-        clickMatchingVideo(videoName);
+        String videoName = VideoServiceSteps.getVideoName();
+        VideoServiceSteps.selectVideoByTitle(videoName);
+        YoutubeSteps.clickMatchingVideo(videoName);
         iLogger.takeScreenshot();
     }
 }
