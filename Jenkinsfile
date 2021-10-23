@@ -1,11 +1,9 @@
 pipeline {
     agent any
 
-    options([
-        parameters([
-            choice(choices: ['chrome', 'firefox'], name: 'driver')
-        ])
-    ])
+    parameters {
+        choice(choices: ['chrome', 'firefox'], name: 'driver')
+    }
 
 
     stages {
