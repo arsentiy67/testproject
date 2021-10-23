@@ -3,6 +3,7 @@ package tests.ui;
 import org.testng.annotations.Test;
 import steps.ChannelSteps;
 import steps.YoutubeSteps;
+import utils.logging.iLogger;
 
 import static steps.VideoServiceSteps.getVideoName;
 import static steps.VideoServiceSteps.selectVideoByTitle;
@@ -19,10 +20,11 @@ public class YouTubeTest extends BaseUITest {
         ChannelSteps.openVideosTab();
     }
 
-//    @Test
-//    public void test1() {
-//        String videoName = getVideoName();
-//        selectVideoByTitle(videoName);
-//        clickMatchingVideo(videoName);
-//    }
+    @Test
+    public void test1() {
+        String videoName = getVideoName();
+        selectVideoByTitle(videoName);
+        clickMatchingVideo(videoName);
+        iLogger.takeScreenshot();
+    }
 }
