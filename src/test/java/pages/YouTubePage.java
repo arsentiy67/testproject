@@ -41,7 +41,6 @@ public class YouTubePage extends AbstractPage {
         searchChannelName.template(channelName).click();
     }
 
-    @SneakyThrows
     public void clickMatchingVideo(String title) {
         iWebElement titleOnPage = videoTitles
                 .stream()
