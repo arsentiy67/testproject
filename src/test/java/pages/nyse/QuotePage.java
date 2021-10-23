@@ -36,7 +36,7 @@ public class QuotePage extends AbstractPage<QuotePage> {
     private iElementsList historicPricesCloseValues;
 
     private static final String DATE_FORMAT_INITIAL = "MM/dd/yyyy";
-    private static final String DATE_FORMAT_OUTPUT = "YYYY-MM-DD";
+    private static final String DATE_FORMAT_OUTPUT = "yyyy-MM-dd";
     private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat(DATE_FORMAT_INITIAL);
 
     public void setHistoricPricesRange(Period period) {
@@ -58,6 +58,7 @@ public class QuotePage extends AbstractPage<QuotePage> {
     }
 
     private String convertToDateInAnotherFormat(String date) throws ParseException {
+        SIMPLE_DATE_FORMAT.applyPattern(DATE_FORMAT_INITIAL);
         Date d = SIMPLE_DATE_FORMAT.parse(date);
         SIMPLE_DATE_FORMAT.applyPattern(DATE_FORMAT_OUTPUT);
         return SIMPLE_DATE_FORMAT.format(d);
