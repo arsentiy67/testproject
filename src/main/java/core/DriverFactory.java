@@ -31,6 +31,7 @@ public class DriverFactory {
         FirefoxOptions firefoxOptions = (FirefoxOptions) (new DriverCapabilities(BrowserNames.FIREFOX)).getCapabilities();
         firefoxOptions.addArguments("--disable-dev-shm-usage");
         firefoxOptions.addArguments("--no-sandbox");
+        firefoxOptions.addArguments("--headless");
         DRIVER.set(new FirefoxDriver(firefoxOptions));
         return DRIVER.get();
       default:
