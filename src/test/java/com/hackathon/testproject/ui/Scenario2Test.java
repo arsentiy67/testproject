@@ -3,6 +3,7 @@ package com.hackathon.testproject.ui;
 import com.hackathon.testproject.model.Period;
 import com.hackathon.testproject.model.PriceStatistics;
 import com.hackathon.testproject.site.NyseSite;
+import com.hackathon.testproject.steps.NyseSteps;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -33,5 +34,7 @@ public class Scenario2Test extends BaseUITest{
         PriceStatistics priceStatistics = new PriceStatistics();
         priceStatistics.setPeriod(pricePeriod);
         priceStatistics.setStockData(nyseSite.quotePage.getHistoricPrices());
+
+        NyseSteps.sendStockData(priceStatistics);
     }
 }
