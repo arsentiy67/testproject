@@ -1,13 +1,13 @@
-package com.hackathon.testproject.ui;
+package tests.ui;
 
-import com.hackathon.testproject.model.Period;
-import com.hackathon.testproject.model.PriceStatistics;
-import com.hackathon.testproject.site.NyseSite;
-import com.hackathon.testproject.steps.NyseSteps;
+import model.Period;
+import model.PriceStatistics;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import site.NyseSite;
+import steps.NyseSteps;
 
-public class Scenario2Test extends BaseUITest{
+public class Scenario2Test extends BaseUITest {
 
     private NyseSite nyseSite;
 

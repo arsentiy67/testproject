@@ -1,12 +1,11 @@
-package com.hackathon.testproject.steps;
+package steps;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hackathon.testproject.model.HistoricPrice;
-import com.hackathon.testproject.model.PriceStatistics;
 import io.restassured.RestAssured;
 import lombok.SneakyThrows;
+import model.HistoricPrice;
+import model.PriceStatistics;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.NoSuchElementException;

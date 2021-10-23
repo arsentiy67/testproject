@@ -1,12 +1,12 @@
-package com.hackathon.testproject.pages.nyse;
+package pages.nyse;
 
-import com.hackathon.testproject.model.HistoricPrice;
-import com.hackathon.testproject.model.Period;
-import com.hackathon.testproject.pages.AbstractPage;
 import core.web.iElementsList;
 import core.web.iWebElement;
+import model.HistoricPrice;
+import model.Period;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
+import pages.AbstractPage;
 
 import java.util.ArrayList;
 import java.util.List;

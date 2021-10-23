@@ -1,7 +1,8 @@
-package com.hackathon.testproject.model;
+package model;
 
 import lombok.Getter;
 import lombok.Setter;
+import model.Period;
 
 import java.util.List;
 

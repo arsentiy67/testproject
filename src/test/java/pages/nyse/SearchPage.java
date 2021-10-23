@@ -1,8 +1,8 @@
-package com.hackathon.testproject.pages.nyse;
+package pages.nyse;
 
-import com.hackathon.testproject.pages.AbstractPage;
 import core.web.iElementsList;
 import org.openqa.selenium.support.FindBy;
+import pages.AbstractPage;
 
 public class SearchPage extends AbstractPage<SearchPage> {
 

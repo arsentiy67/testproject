@@ -1,9 +1,9 @@
-package com.hackathon.testproject.site;
+package site;
 
-import com.hackathon.testproject.pages.nyse.MainPage;
-import com.hackathon.testproject.pages.nyse.QuotePage;
-import com.hackathon.testproject.pages.nyse.SearchPage;
 import org.openqa.selenium.WebDriver;
+import pages.nyse.MainPage;
+import pages.nyse.QuotePage;
+import pages.nyse.SearchPage;
 
 public class NyseSite {
 
@@ -14,8 +14,8 @@ public class NyseSite {
     public static final String URL = "https://www.nyse.com/";
 
     public NyseSite(WebDriver driver) {
-        mainPage.init(driver);
-        searchPage.init(driver);
-        quotePage.init(driver);
+        mainPage.init();
+        quotePage.init();
+        searchPage.init();
     }
 }
