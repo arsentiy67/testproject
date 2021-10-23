@@ -1,6 +1,7 @@
 package tests.ui;
 
 import org.testng.annotations.Test;
+import steps.ChannelSteps;
 import steps.YoutubeSteps;
 
 public class YouTubeTest extends BaseUITest{
@@ -10,6 +11,7 @@ public class YouTubeTest extends BaseUITest{
         String channelName = "EPAM Systems Global";
         YoutubeSteps.navigateToSite();
         YoutubeSteps.searchText(channelName);
-        YoutubeSteps.waitForChannelToBePresented(channelName);
+        YoutubeSteps.navigateToChannelFromSearch(channelName);
+        ChannelSteps.openVideosTab();
     }
 }

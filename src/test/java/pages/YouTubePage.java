@@ -25,4 +25,8 @@ public class YouTubePage extends AbstractPage {
         iLogger.info("wait for channel {} to be visible", channelName);
         waitForVisibilityOfElement(searchChannelName.template(channelName));
     }
+
+    public void navigateToChannelFromSearch(String channelName) {
+        searchChannelName.template(channelName).click();
+    }
 }
