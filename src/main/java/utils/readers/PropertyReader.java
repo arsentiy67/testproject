@@ -17,8 +17,8 @@ public class PropertyReader {
 
   public static void readProperties() {
     PROPERTIES.putAll(System.getProperties());
-    System.out.println("DEBUG: DRIVER1: " + System.getProperty("driver"));
-    System.out.println("DEBUG: DRIVER2: " + System.getenv("driver"));
+    System.out.println("DEBUG: DRIVER1: " + System.getProperty("WEB_DRIVER"));
+    System.out.println("DEBUG: DRIVER2: " + System.getenv("WEB_DRIVER"));
 
     List<Class<?>> classesList = new ClassLoader().loadClassesInPackage("utils.properties");
     String filePath;
