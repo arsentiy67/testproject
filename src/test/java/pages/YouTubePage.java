@@ -30,6 +30,10 @@ public class YouTubePage extends AbstractPage {
         waitForVisibilityOfElement(searchChannelName.template(channelName));
     }
 
+    public void navigateToChannelFromSearch(String channelName) {
+        searchChannelName.template(channelName).click();
+    }
+
     public void clickMatchingVideo(String title) {
         iWebElement titleOnPage = videoTitles.stream().filter(s -> s.getAttribute("title").contains(title)).findFirst().get();
         titleOnPage.click();

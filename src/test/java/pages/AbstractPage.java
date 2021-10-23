@@ -34,6 +34,9 @@ public class AbstractPage<T extends AbstractPage> {
         this.url = url;
     }
 
+    public AbstractPage() {
+    }
+
     public void navigate() {
         driver.navigate().to(url);
     }

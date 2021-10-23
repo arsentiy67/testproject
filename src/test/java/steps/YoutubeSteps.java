@@ -15,8 +15,9 @@ public class YoutubeSteps {
         page.searchText(searchText);
     }
 
-    public static void waitForChannelToBePresented(String channelName) {
+    public static void navigateToChannelFromSearch(String channelName) {
         page.waitForChannelIsViewedInSearch(channelName);
+        page.navigateToChannelFromSearch(channelName);
     }
 
     public static void clickMatchingVideo(String title){
