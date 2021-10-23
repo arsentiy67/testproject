@@ -55,7 +55,7 @@ public class DriverFactory {
     chromeOptions.addArguments("--disable-dev-shm-usage");
     chromeOptions.addArguments("--no-sandbox");
     chromeOptions.addArguments("--headless");
-    chromeOptions.addArguments("--lang=en");
+    chromeOptions.addArguments("--lang=en-GB");
     return chromeOptions;
   }
 
