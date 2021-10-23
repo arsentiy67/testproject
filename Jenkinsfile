@@ -5,6 +5,11 @@ pipeline {
         choice(choices: ['chrome', 'firefox'], name: 'driver', description: 'Choose browser')
     }
 
+    environment {
+        driver="${params.driver}"
+        print(driver)
+    }
+
 
     stages {
         stage('Clean') {
@@ -19,12 +24,10 @@ pipeline {
         }
         stage('Build') {
             steps {
-                withEnv(['driver="${params.driver}"']) {
-                    sh '''
-                        chmod +x ./mvnw
-                        ./mvnw clean test
-                    '''
-                }
+                sh '''
+                    chmod +x ./mvnw
+                    ./mvnw clean test
+                '''
             }
         }
 
