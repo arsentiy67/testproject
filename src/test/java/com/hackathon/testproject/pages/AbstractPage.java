@@ -1,4 +1,4 @@
-package pages;
+package com.hackathon.testproject.pages;
 
 import java.time.Duration;
 

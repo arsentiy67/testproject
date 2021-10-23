@@ -1,4 +1,4 @@
-package pages;
+package com.hackathon.testproject.pages;
 
 import core.web.iWebElement;
 import core.web.iElementsList;
