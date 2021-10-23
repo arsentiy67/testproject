@@ -124,6 +124,10 @@ public class iWebElement implements WebElement {
     }
 
     public void clear() {
+        getWebElement().clear();
+    }
+
+    public void clearViaJavaScript() {
         iLogger.debug("Clear field {}", name);
         try {
             WebElement element = getWebElement();
