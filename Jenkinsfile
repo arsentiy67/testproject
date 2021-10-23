@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        WEB_DRIVER = "${params.driver}"
+        driver = "${params.driver}"
     }
 
 
