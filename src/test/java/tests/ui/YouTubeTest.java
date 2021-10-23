@@ -3,7 +3,11 @@ package tests.ui;
 import org.testng.annotations.Test;
 import steps.YoutubeSteps;
 
-public class YouTubeTest extends BaseUITest{
+import static steps.VideoServiceSteps.getVideoName;
+import static steps.VideoServiceSteps.selectVideoByTitle;
+import static steps.YoutubeSteps.clickMatchingVideo;
+
+public class YouTubeTest extends BaseUITest {
 
     @Test
     public void test() {
@@ -12,4 +16,11 @@ public class YouTubeTest extends BaseUITest{
         YoutubeSteps.searchText(channelName);
         YoutubeSteps.waitForChannelToBePresented(channelName);
     }
+
+//    @Test
+//    public void test1() {
+//        String videoName = getVideoName();
+//        selectVideoByTitle(videoName);
+//        clickMatchingVideo(videoName);
+//    }
 }
