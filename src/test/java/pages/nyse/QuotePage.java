@@ -2,6 +2,7 @@ package pages.nyse;
 
 import core.web.iElementsList;
 import core.web.iWebElement;
+import lombok.SneakyThrows;
 import model.HistoricPrice;
 import model.Period;
 import org.openqa.selenium.Keys;
@@ -55,6 +56,7 @@ public class QuotePage extends AbstractPage<QuotePage> {
         return historicPrices;
     }
 
+    @SneakyThrows
     private String convertToDateInAnotherFormat(String date) {
         Date d = SIMPLE_DATE_FORMAT.parse(date);
         SIMPLE_DATE_FORMAT.applyPattern(DATE_FORMAT_OUTPUT);
