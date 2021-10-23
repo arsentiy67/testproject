@@ -1,16 +1,24 @@
 package com.hackathon.testproject.ui;
 
-import com.hackathon.testproject.steps.NyseSteps;
+import com.hackathon.testproject.site.NyseSite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-//import com.hackathon.testproject.pages.nyse.MainPage;
 
 public class Scenario2Test extends BaseUITest{
 
-//    private MainPage mainPage;
+    private NyseSite nyseSite;
+
+    @BeforeClass
+    public void beforeClass() {
+        nyseSite = new NyseSite(driver());
+    }
 
     @Test
     public void test() {
-        NyseSteps.navigateToSite();
+        driver().navigate().to(NyseSite.URL);
+        String searchText = "Epam";
+        nyseSite.mainPage.search(searchText);
+        nyseSite.mainPage.clickFirstSearchDropDownLink();
 
     }
 }

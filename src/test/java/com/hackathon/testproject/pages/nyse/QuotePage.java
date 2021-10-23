@@ -5,3 +5,4 @@ import com.hackathon.testproject.pages.AbstractPage;
 public class QuotePage extends AbstractPage {
 
 }
+

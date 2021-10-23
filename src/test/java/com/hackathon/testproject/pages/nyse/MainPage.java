@@ -6,6 +6,7 @@ import core.web.iWebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends AbstractPage<MainPage> {
+
     @FindBy(id = "page-search")
     private iWebElement searchInput;
 
