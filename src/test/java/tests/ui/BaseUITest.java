@@ -1,4 +1,4 @@
-package com.hackathon.testproject.ui;
+package tests.ui;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

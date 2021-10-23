@@ -1,4 +1,4 @@
-package com.hackathon.testproject.steps;
+package steps;
 
 import core.DriverFactory;
 import core.web.iWebElement;
@@ -19,6 +19,10 @@ public class BaseSteps {
     public static void refreshPage() {
         iLogger.info("Refresh page {}", getUrl());
         driver().navigate().refresh();
+    }
+
+    public static void screenshot() {
+        iLogger.takeScreenshot();
     }
 
     protected static void clickOnText(String elementsText) {

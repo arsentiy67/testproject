@@ -1,6 +1,7 @@
 package core.web;
 
 import core.tools.CacheValue;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.openqa.selenium.*;
 import org.openqa.selenium.By.*;
 import org.openqa.selenium.interactions.Actions;
@@ -92,7 +93,7 @@ public class iWebElement implements WebElement {
         } catch (Exception e) {
             try {
                 iLogger.takeScreenshot("Can't click element with regular click");
-                waitForClick.until(new HiddenCondition(element));
+                waitForClick.until(new SneakyClick(element));
             } catch (TimeoutException ex) {
                 if (driver.findElements(byLocator).size() == 0) {
                     throw new NoSuchElementException("No such element");
@@ -152,7 +153,7 @@ public class iWebElement implements WebElement {
     }
 
     public String getText() {
-        setFocus();
+        // setFocus();
         WebElement el = getWebElement();
         String text = el.getText();
         String value = el.getAttribute("value");
@@ -305,11 +306,11 @@ public class iWebElement implements WebElement {
         this.sendKeys(Keys.RETURN);
     }
 
-    public class HiddenCondition implements ExpectedCondition {
+    public class SneakyClick implements ExpectedCondition {
 
         WebElement element;
 
-        public HiddenCondition(WebElement element) {
+        public SneakyClick(WebElement element) {
             iLogger.info("Try to click element with JS");
             this.element = element;
         }

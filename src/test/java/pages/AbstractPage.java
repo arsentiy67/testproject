@@ -1,8 +1,9 @@
-package com.hackathon.testproject.pages;
+package pages;
 
 import java.time.Duration;
 
 import core.CustomPageFactory;
+import core.DriverFactory;
 import core.web.iWebElement;
 import core.web.iElementsList;
 import org.openqa.selenium.By;
@@ -18,20 +19,40 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utils.logging.iLogger;
-import utils.properties.SystemProperties;
 
 public class AbstractPage<T extends AbstractPage> {
 
     @FindBy(xpath = "//a[contains(.,'%s')]")
     private iWebElement linkWithText;
 
-    public static final String SITE_URL = String.format("https://%s", SystemProperties.BASE_URL);
+    protected String url;
     protected static final ThreadLocal<WebDriverWait> WAIT = new ThreadLocal<>();
 
     public WebDriver driver;
 
-    public T init(WebDriver driver) {
-        this.driver = driver;
+    public AbstractPage(String url) {
+        this.url = url;
+        init();
+    }
+
+    protected void refresh() {
+        driver.navigate().refresh();
+    }
+
+    public AbstractPage() {
+        init();
+    }
+
+    public void navigate() {
+        driver.navigate().to(url);
+    }
+
+    public T init() {
+        try {
+            this.driver = DriverFactory.getDriver();
+        } catch (Exception e) {
+            iLogger.error("Please, set correct driver name");
+        }
         WAIT.set(new WebDriverWait(driver, 10));
         driver.manage().window().setSize(new Dimension(1920, 1080));
         CustomPageFactory.initElements(driver, this);

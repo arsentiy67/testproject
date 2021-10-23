@@ -18,6 +18,10 @@ public class DriverFactory {
   private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
 
   public static WebDriver getDriver() throws Exception {
+    if (DRIVER.get() != null) {
+      return getCurrentDriver();
+    }
+
     driverName = DriverNames.valueOf(SystemProperties.DRIVER.toUpperCase());
     iLogger.info("Create driver " + driverName);
     switch (driverName) {
@@ -54,7 +58,6 @@ public class DriverFactory {
     ChromeOptions chromeOptions = (ChromeOptions) (new DriverCapabilities(BrowserNames.CHROME)).getCapabilities();
     chromeOptions.addArguments("--disable-dev-shm-usage");
     chromeOptions.addArguments("--no-sandbox");
-    chromeOptions.addArguments("--headless");
     chromeOptions.addArguments("--lang=en-GB");
     return chromeOptions;
   }
