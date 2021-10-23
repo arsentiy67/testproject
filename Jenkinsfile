@@ -6,8 +6,10 @@ pipeline {
     }
 
     environment {
-        driver="${params.driver}"
-        print(driver)
+        WEB_DRIVER = "${params.driver}"
+        sh(
+            script: "print ${WEB_DRIVER}"
+        )
     }
 
 
