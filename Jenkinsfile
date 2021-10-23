@@ -18,14 +18,13 @@ pipeline {
             }
         }
         stage('Build') {
-            environment {
-                driver="${params.driver}"
-            }
-            steps {
-                sh '''
-                    chmod +x ./mvnw
-                    ./mvnw clean test
-                '''
+            withEnv(['driver="${params.driver}"']) {
+                steps {
+                    sh '''
+                        chmod +x ./mvnw
+                        ./mvnw clean test
+                    '''
+                }
             }
         }
 
