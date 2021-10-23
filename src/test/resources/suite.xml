@@ -4,8 +4,7 @@
        configfailurepolicy="continue">
     <test name="Tests">
         <packages>
-            <package name="com.hackathon.testproject.ui"/>
-            <package name="com.hackathon.testproject.api"/>
+            <package name="tests.ui"/>
         </packages>
     </test>
 </suite>

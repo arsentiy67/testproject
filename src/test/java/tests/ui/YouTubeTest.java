@@ -5,6 +5,7 @@ import steps.ChannelSteps;
 import steps.VideoServiceSteps;
 import steps.YoutubeSteps;
 import utils.FibonacciPrimeRandomGenerator;
+import utils.logging.iLogger;
 
 import java.util.List;
 
@@ -26,5 +27,13 @@ public class YouTubeTest extends BaseUITest {
         String videoName = VideoServiceSteps.getVideoName();
         VideoServiceSteps.selectVideoByTitle(videoName);
         YoutubeSteps.clickMatchingVideo(videoName);
+    }
+
+    @Test
+    public void test1() {
+        String videoName = getVideoName();
+        selectVideoByTitle(videoName);
+        clickMatchingVideo(videoName);
+        iLogger.takeScreenshot();
     }
 }

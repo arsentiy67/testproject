@@ -53,6 +53,5 @@ public class VideoServiceSteps {
     public static void selectVideoByTitle(String title) {
         navigateToSite();
         searchText(title);
-
     }
 }
