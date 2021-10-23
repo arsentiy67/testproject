@@ -1,20 +1,20 @@
 package utils.logging;
 
 import core.DriverFactory;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Reporter;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+
+import static io.qameta.allure.Allure.addAttachment;
 
 public class iLogger {
 
@@ -82,9 +82,11 @@ public class iLogger {
   }
 
   public static void takeScreenshot() {
-    File scrFile = ((TakesScreenshot) DriverFactory.getCurrentDriver()).getScreenshotAs(OutputType.FILE);
+    TakesScreenshot takesScreenshot = (TakesScreenshot) DriverFactory.getCurrentDriver();
+    File scrFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
     Reporter.log("<br><a href='data:image/png;base64," + encodeFileToBase64Binary(scrFile)
         + "'> CLICK TO SEE SCREENSHOT </a></br>");
+    addAttachment("screenshot", new ByteArrayInputStream(takesScreenshot.getScreenshotAs(OutputType.BYTES)));
   }
 
   public static void takeScreenshot(String message) {
