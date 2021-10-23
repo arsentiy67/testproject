@@ -17,5 +17,11 @@ public class TestListener extends TestListenerAdapter {
             iLogger.error("Test failed", result.getThrowable());
         }
     }
+
+    @Override
+    public void onTestSuccess(ITestResult tr) {
+        iLogger.info("Test success " + tr.getMethod());
+        iLogger.takeScreenshot();
+    }
 }
 
