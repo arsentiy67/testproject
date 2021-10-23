@@ -5,8 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-class HistoricPrice {
-
+public class HistoricPrice {
     private String date;
-    private String closePrice;
+    private Double value;
 }
