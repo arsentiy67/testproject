@@ -7,6 +7,6 @@ public class ChannelSteps extends BaseSteps{
 
     public static void openVideosTab() {
         page = new ChannelPage();
-        page.clickTab("Видео");
+        page.clickTab("Videos");
     }
 }

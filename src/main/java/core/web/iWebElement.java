@@ -306,32 +306,6 @@ public class iWebElement implements WebElement {
         this.sendKeys(Keys.RETURN);
     }
 
-    public void waitForCssToBe(String css, String expectedValue) {
-        wait.until(new WaitForCssToBe(this, css, expectedValue));
-    }
-
-    public class WaitForCssToBe implements ExpectedCondition {
-        WebElement element;
-        String css;
-        String expectedValue;
-
-        public WaitForCssToBe(WebElement element, String css, String expectedValue) {
-            this.element = element;
-            this.css = css;
-            this.expectedValue = expectedValue;
-        }
-
-        @Override
-        public Boolean apply(Object input) {
-            try {
-                return element.getCssValue(css).equals(expectedValue);
-            } catch (WebDriverException e) {
-                return false;
-            }
-        }
-    }
-
-
     public class SneakyClick implements ExpectedCondition {
 
         WebElement element;

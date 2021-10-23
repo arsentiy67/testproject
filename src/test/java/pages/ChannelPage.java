@@ -14,6 +14,5 @@ public class ChannelPage extends AbstractPage{
     public void clickTab(String tabName) {
         iLogger.info("Open tab {}", tabName);
         channelTab.template(tabName).click();
-        channelTab.template(tabName).waitForCssToBe("aria-selected", "true");
     }
 }

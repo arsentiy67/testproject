@@ -32,9 +32,11 @@ public class AbstractPage<T extends AbstractPage> {
 
     public AbstractPage(String url) {
         this.url = url;
+        init();
     }
 
     public AbstractPage() {
+        init();
     }
 
     public void navigate() {

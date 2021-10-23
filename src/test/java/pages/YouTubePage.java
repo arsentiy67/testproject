@@ -12,7 +12,6 @@ public class YouTubePage extends AbstractPage {
 
     public YouTubePage(String pageUrl) {
         super(pageUrl);
-        this.init();
     }
 
     public void searchText(String text) {
