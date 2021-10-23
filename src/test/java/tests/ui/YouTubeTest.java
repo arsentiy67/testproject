@@ -2,12 +2,11 @@ package tests.ui;
 
 import org.testng.annotations.Test;
 import steps.ChannelSteps;
+import steps.VideoServiceSteps;
 import steps.YoutubeSteps;
 import utils.FibonacciPrimeRandomGenerator;
 
-import static steps.VideoServiceSteps.getVideoName;
-import static steps.VideoServiceSteps.selectVideoByTitle;
-import static steps.YoutubeSteps.clickMatchingVideo;
+import java.util.List;
 
 public class YouTubeTest extends BaseUITest {
 
@@ -21,13 +20,11 @@ public class YouTubeTest extends BaseUITest {
         YoutubeSteps.navigateToChannelFromSearch(channelName);
         ChannelSteps.openVideosTab();
         videoTitles = ChannelSteps.getVideoTitles();
-        ChannelSteps.openVideoByTitle(videoTitles.get(videoNumber - 1));
-    }
-
-    @Test
-    public void test1() {
-        String videoName = getVideoName();
-        selectVideoByTitle(videoName);
-        clickMatchingVideo(videoName);
+        ChannelSteps.openVideoByTitle(videoTitles.get(videoNumber % videoTitles.size() - 1));
+        ChannelSteps.screenshot();
+        //part 2 with API call
+        String videoName = VideoServiceSteps.getVideoName();
+        VideoServiceSteps.selectVideoByTitle(videoName);
+        YoutubeSteps.clickMatchingVideo(videoName);
     }
 }

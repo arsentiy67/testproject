@@ -21,6 +21,10 @@ public class BaseSteps {
         driver().navigate().refresh();
     }
 
+    public static void screenshot() {
+        iLogger.takeScreenshot();
+    }
+
     protected static void clickOnText(String elementsText) {
         new iWebElement(driver(), elementsText, String.format("//*[text()='%s']", elementsText))
                 .click();

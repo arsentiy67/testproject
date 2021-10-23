@@ -153,7 +153,7 @@ public class iWebElement implements WebElement {
     }
 
     public String getText() {
-        setFocus();
+        // setFocus();
         WebElement el = getWebElement();
         String text = el.getText();
         String value = el.getAttribute("value");

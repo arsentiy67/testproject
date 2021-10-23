@@ -2,9 +2,11 @@ package pages;
 
 import core.web.iElementsList;
 import core.web.iWebElement;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.logging.iLogger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChannelPage extends AbstractPage{
@@ -20,14 +22,20 @@ public class ChannelPage extends AbstractPage{
     public void clickTab(String tabName) {
         iLogger.info("Open tab {}", tabName);
         channelTab.template(tabName).click();
+        refresh();
     }
 
     public List<String> getVideoTitles() {
-        return videoTitles.getTexts();
+        List<String> titles = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            titles.add(videoTitles.get(i).getAttribute("title"));
+        }
+        return titles;
     }
 
     public void clickVideoByTitle(String title) {
-        iWebElement titleOnPage = videoTitles.stream().filter(s -> s.getAttribute("title").contains(title)).findFirst().get();
+        iLogger.info("Click video with title {}", title);
+        WebElement titleOnPage = videoTitles.stream().filter(s -> s.getAttribute("title").contains(title)).findFirst().get();
         titleOnPage.click();
     }
 }

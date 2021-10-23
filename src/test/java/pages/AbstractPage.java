@@ -35,6 +35,10 @@ public class AbstractPage<T extends AbstractPage> {
         init();
     }
 
+    protected void refresh() {
+        driver.navigate().refresh();
+    }
+
     public AbstractPage() {
         init();
     }
