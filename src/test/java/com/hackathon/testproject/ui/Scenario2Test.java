@@ -14,11 +14,18 @@ public class Scenario2Test extends BaseUITest{
     }
 
     @Test
-    public void test() {
+    public void getHighestEpamClosingPriceTest() { // todo rename the test
         driver().navigate().to(NyseSite.URL);
+        nyseSite.mainPage.acceptCookies();
+
         String searchText = "Epam";
         nyseSite.mainPage.search(searchText);
-        nyseSite.mainPage.clickFirstSearchDropDownLink();
+        // todo assert that search results are present ?
+        nyseSite.searchPage.clickFirstSearchResult();
+
+        String fromDate = "2021-09-01";
+        String toDate = "2021-09-30";
+        nyseSite.quotePage.setHistoricPricesRange(fromDate, toDate);
 
     }
 }
