@@ -16,6 +16,7 @@ public class PropertyReader {
 
   public static void readProperties() {
     PROPERTIES.putAll(System.getProperties());
+    System.out.println("DEBUG: PROPERTIES: " + PROPERTIES);
 
     List<Class<?>> classesList = new ClassLoader().loadClassesInPackage("utils.properties");
     String filePath;
