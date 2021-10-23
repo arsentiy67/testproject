@@ -3,17 +3,17 @@ pipeline {
 
     stages {
         stage('Clean') {
-            com.epam.testproject.steps {
+            steps {
                 cleanWs()
             }
         }
         stage('Checkout') {
-            com.epam.testproject.steps {
+            steps {
                 checkout scm
             }
         }
         stage('Build') {
-            com.epam.testproject.steps {
+            steps {
                 sh '''
                     chmod +x ./mvnw
                     ./mvnw clean test
