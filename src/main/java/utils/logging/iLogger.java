@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Reporter;
+import utils.properties.SystemProperties;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -23,6 +24,7 @@ public class iLogger {
   public static void info(String message) {
     LOG.info(message);
     Reporter.log(timeStamp() + "INFO: " + message + "</br>");
+    screenshot();
   }
 
   public static void info(String s, String replacement) {
@@ -31,6 +33,7 @@ public class iLogger {
 
   public static void info(String s, String... replacement) {
     Arrays.stream(replacement).forEach(r -> s.replace("{}", r));
+    info(s);
   }
 
   public static void info(String s, int replacement) {
@@ -44,6 +47,7 @@ public class iLogger {
   public static void debug(String message) {
     LOG.debug(message);
     Reporter.log(timeStamp() + "DEBUG: " + message + "</br>");
+    screenshot();
   }
 
   public static void debug(String s, String replacement) {
@@ -52,6 +56,7 @@ public class iLogger {
 
   public static void debug(String s, String... replacement) {
     Arrays.stream(replacement).sequential().forEach(r -> s.replace("{}", r));
+    debug(s);
   }
 
   public static void error(String s, String replacement) {
@@ -87,6 +92,11 @@ public class iLogger {
     Reporter.log("<br><a href='data:image/png;base64," + encodeFileToBase64Binary(scrFile)
         + "'> CLICK TO SEE SCREENSHOT </a></br>");
     addAttachment("screenshot", new ByteArrayInputStream(takesScreenshot.getScreenshotAs(OutputType.BYTES)));
+  }
+
+  private static void screenshot() {
+    if (SystemProperties.SCREENSHOT)
+      takeScreenshot();
   }
 
   public static void takeScreenshot(String message) {

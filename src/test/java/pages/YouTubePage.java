@@ -12,7 +12,7 @@ public class YouTubePage extends AbstractPage {
     @FindBy(xpath = "//ytd-channel-renderer//yt-formatted-string[@id='text' and text()='%s']")
     private iWebElement searchChannelName;
     @FindBy(css = "a#video-title")
-        private List<iWebElement> videoTitles;
+    private List<iWebElement> videoTitles;
 
     public YouTubePage(String pageUrl) {
         super(pageUrl);
@@ -20,6 +20,7 @@ public class YouTubePage extends AbstractPage {
 
     public void searchText(String text) {
         iLogger.info("Search for text {}", text);
+        searchBar.click();
         searchBar.setText(text);
         searchBar.enter();
     }
