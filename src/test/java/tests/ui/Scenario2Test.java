@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 import site.NyseSite;
 import steps.NyseSteps;
 
+import java.text.ParseException;
+
 public class Scenario2Test extends BaseUITest {
 
     private NyseSite nyseSite;
@@ -17,7 +19,7 @@ public class Scenario2Test extends BaseUITest {
     }
 
     @Test
-    public void getHighestEpamClosingPriceTest() {
+    public void getHighestEpamClosingPriceTest() throws ParseException {
         driver().navigate().to(NyseSite.URL);
         nyseSite.mainPage.acceptCookies();
 
