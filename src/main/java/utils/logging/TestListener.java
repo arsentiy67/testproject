@@ -15,6 +15,8 @@ public class TestListener extends TestListenerAdapter {
         if (!result.isSuccess()) {
             iLogger.takeScreenshot();
             iLogger.error("Test failed", result.getThrowable());
+        } else {
+            iLogger.takeScreenshot();
         }
     }
 }
