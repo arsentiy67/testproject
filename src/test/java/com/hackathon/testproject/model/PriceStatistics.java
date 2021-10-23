@@ -1,4 +1,4 @@
-package model;
+package com.hackathon.testproject.model;
 
 import lombok.Getter;
 import lombok.Setter;

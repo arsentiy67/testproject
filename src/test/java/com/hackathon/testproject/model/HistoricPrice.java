@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class HistoricPrice {
     private String date;
-    private Double value;
+    private String value;
 }
