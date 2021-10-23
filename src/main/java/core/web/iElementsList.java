@@ -124,7 +124,7 @@ public class iElementsList extends iWebElement implements List<iWebElement> {
 
   public List<String> getTexts() {
     List<iWebElement> allElements = getAll();
-    allElements.forEach(iWebElement::waitToBeVisible);
+    //allElements.forEach(iWebElement::waitToBeVisible);
     return allElements.stream().map(iWebElement::getText).collect(Collectors.toList());
   }
 
