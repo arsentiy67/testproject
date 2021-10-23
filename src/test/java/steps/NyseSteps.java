@@ -1,11 +1,6 @@
 package steps;
 
-public class NyseSteps extends BaseSteps {
-      public static void navigateToSite() {
-          driver().navigate().to("https://www.google.com/");
-      }
+public class NyseSteps  {
 
-      public static void searchText() {
 
-      }
 }

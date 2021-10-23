@@ -13,6 +13,5 @@ public class MainPage {
 
     public static void search(String searchValue) {
 
-
     }
 }
