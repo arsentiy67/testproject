@@ -19,20 +19,23 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utils.logging.iLogger;
-import utils.properties.SystemProperties;
 
 public class AbstractPage<T extends AbstractPage> {
 
     @FindBy(xpath = "//a[contains(.,'%s')]")
     private iWebElement linkWithText;
 
-    public static String URL;
+    protected String url;
     protected static final ThreadLocal<WebDriverWait> WAIT = new ThreadLocal<>();
 
     public WebDriver driver;
 
+    public AbstractPage(String url) {
+        this.url = url;
+    }
+
     public void navigate() {
-        driver.navigate().to(URL);
+        driver.navigate().to(url);
     }
 
     public T init() {

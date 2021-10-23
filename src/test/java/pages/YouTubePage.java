@@ -4,11 +4,14 @@ import core.web.iWebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.logging.iLogger;
 
-public class YouTubePage extends AbstractPage{
-    @FindBy(id = "search")
+public class YouTubePage extends AbstractPage {
+    @FindBy(xpath = "//input[@id='search']")
     private iWebElement searchBar;
+    @FindBy(xpath = "//ytd-channel-renderer//yt-formatted-string[@id='text' and text()='%s']")
+    private iWebElement searchChannelName;
 
-    public YouTubePage() {
+    public YouTubePage(String pageUrl) {
+        super(pageUrl);
         this.init();
     }
 
@@ -16,5 +19,10 @@ public class YouTubePage extends AbstractPage{
         iLogger.info("Search for text {}", text);
         searchBar.setText(text);
         searchBar.enter();
+    }
+
+    public void waitForChannelIsViewedInSearch(String channelName) {
+        iLogger.info("wait for channel {} to be visible", channelName);
+        waitForVisibilityOfElement(searchChannelName.template(channelName));
     }
 }
