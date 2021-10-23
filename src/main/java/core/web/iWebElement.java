@@ -1,6 +1,7 @@
 package core.web;
 
 import core.tools.CacheValue;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.openqa.selenium.*;
 import org.openqa.selenium.By.*;
 import org.openqa.selenium.interactions.Actions;
@@ -92,7 +93,7 @@ public class iWebElement implements WebElement {
         } catch (Exception e) {
             try {
                 iLogger.takeScreenshot("Can't click element with regular click");
-                waitForClick.until(new HiddenCondition(element));
+                waitForClick.until(new SneakyClick(element));
             } catch (TimeoutException ex) {
                 if (driver.findElements(byLocator).size() == 0) {
                     throw new NoSuchElementException("No such element");
@@ -305,11 +306,37 @@ public class iWebElement implements WebElement {
         this.sendKeys(Keys.RETURN);
     }
 
-    public class HiddenCondition implements ExpectedCondition {
+    public void waitForCssToBe(String css, String expectedValue) {
+        wait.until(new WaitForCssToBe(this, css, expectedValue));
+    }
+
+    public class WaitForCssToBe implements ExpectedCondition {
+        WebElement element;
+        String css;
+        String expectedValue;
+
+        public WaitForCssToBe(WebElement element, String css, String expectedValue) {
+            this.element = element;
+            this.css = css;
+            this.expectedValue = expectedValue;
+        }
+
+        @Override
+        public Boolean apply(Object input) {
+            try {
+                return element.getCssValue(css).equals(expectedValue);
+            } catch (WebDriverException e) {
+                return false;
+            }
+        }
+    }
+
+
+    public class SneakyClick implements ExpectedCondition {
 
         WebElement element;
 
-        public HiddenCondition(WebElement element) {
+        public SneakyClick(WebElement element) {
             iLogger.info("Try to click element with JS");
             this.element = element;
         }
