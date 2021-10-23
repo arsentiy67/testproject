@@ -10,5 +10,5 @@ import java.util.List;
 public class PriceStatistics {
     private Period period;
     private List<HistoricPrice> stockData;
-    private Integer highestClosingPrice;
+    private String highestClosingPrice;
 }

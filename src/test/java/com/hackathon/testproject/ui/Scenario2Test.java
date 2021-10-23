@@ -13,4 +13,9 @@ public class Scenario2Test extends BaseUITest{
         NyseSteps.navigateToSite();
 
     }
+
+    @Test
+    public void checkJson() {
+        NyseSteps.sendMockStockData();
+    }
 }
