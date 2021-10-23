@@ -18,8 +18,8 @@ pipeline {
             }
         }
         stage('Build') {
-            withEnv(['driver="${params.driver}"']) {
-                steps {
+            steps {
+                withEnv(['driver="${params.driver}"']) {
                     sh '''
                         chmod +x ./mvnw
                         ./mvnw clean test
