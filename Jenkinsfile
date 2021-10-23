@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        choice(choices: ['chrome', 'firefox'], name: 'driver')
+        choice(choices: ['chrome', 'firefox'], name: 'driver', description: 'Choose browser')
     }
 
 
@@ -18,6 +18,9 @@ pipeline {
             }
         }
         stage('Build') {
+            environment {
+                driver=${params.driver}
+            }
             steps {
                 sh '''
                     chmod +x ./mvnw
