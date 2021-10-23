@@ -19,13 +19,18 @@ public class DriverFactory {
     iLogger.info("Create driver " + driverName);
     switch (driverName) {
       case CHROME:
-        WebDriverManager.chromedriver().driverVersion(SystemProperties.BROWSER_VERSION).setup();
-        DRIVER.set(new ChromeDriver((ChromeOptions) (new DriverCapabilities(BrowserNames.CHROME)).getCapabilities()));
+//        WebDriverManager.chromedriver().driverVersion(SystemProperties.BROWSER_VERSION).setup();
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions chromeOptions = (ChromeOptions) (new DriverCapabilities(BrowserNames.CHROME)).getCapabilities();
+        chromeOptions.addArguments("--disable-dev-shm-usage");
+        chromeOptions.addArguments("--no-sandbox");
+        chromeOptions.addArguments("--headless");
+        DRIVER.set(new ChromeDriver(chromeOptions));
         return DRIVER.get();
       case FIREFOX:
         WebDriverManager.firefoxdriver().setup();
-        DRIVER
-            .set(new FirefoxDriver((FirefoxOptions) (new DriverCapabilities(BrowserNames.FIREFOX)).getCapabilities()));
+        FirefoxOptions firefoxOptions = (FirefoxOptions) (new DriverCapabilities(BrowserNames.FIREFOX)).getCapabilities();
+        DRIVER.set(new FirefoxDriver(firefoxOptions));
         return DRIVER.get();
       default:
         throw new Exception("No such driver in DriverFactory");

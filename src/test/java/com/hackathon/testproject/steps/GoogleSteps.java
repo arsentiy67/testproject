@@ -1,4 +1,4 @@
-package steps;
+package com.hackathon.testproject.steps;
 
 public class GoogleSteps extends BaseSteps {
       public static void navigateToSite() {
