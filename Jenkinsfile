@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        choice(choices: ['chrome', 'firefox'], name: 'driver', description: 'Choose browser')
+        choice(choices: ['CHROME', 'CHROME-MOBILE'], name: 'driver', description: 'Choose browser')
     }
 
     environment {
