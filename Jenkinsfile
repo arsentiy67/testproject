@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     properties([
-      parameters([
-        string(name: 'driver', defaultValue: 'chrome')
-      ])
+        parameters([
+            choice(choices: ['chrome', 'firefox'], name: 'driver')
+        ])
     ])
 
 
