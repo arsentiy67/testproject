@@ -1,14 +1,15 @@
 package utils.readers;
 
+import org.apache.commons.lang3.reflect.FieldUtils;
+import utils.logging.iLogger;
+import utils.properties.FilePath;
+import utils.properties.Property;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Properties;
-import org.apache.commons.lang3.reflect.FieldUtils;
-import utils.logging.iLogger;
-import utils.properties.FilePath;
-import utils.properties.Property;
 
 public class PropertyReader {
 
@@ -16,7 +17,8 @@ public class PropertyReader {
 
   public static void readProperties() {
     PROPERTIES.putAll(System.getProperties());
-    System.out.println("DEBUG: PROPERTIES: " + PROPERTIES);
+    System.out.println("DEBUG: DRIVER1: " + System.getProperty("driver"));
+    System.out.println("DEBUG: DRIVER2: " + System.getenv("driver"));
 
     List<Class<?>> classesList = new ClassLoader().loadClassesInPackage("utils.properties");
     String filePath;
