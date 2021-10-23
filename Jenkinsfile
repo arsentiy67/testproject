@@ -7,6 +7,7 @@ pipeline {
 
     environment {
         driver = "${params.driver}"
+        DISPLAY = ":0"
     }
 
 
